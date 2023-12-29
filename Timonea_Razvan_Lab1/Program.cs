@@ -1,7 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Timonea_Razvan_Lab1.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<Timonea_Razvan_Lab1Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Timonea_Razvan_Lab1Context") ?? throw new InvalidOperationException("Connection string 'Timonea_Razvan_Lab1Context' not found.")));
 
 var app = builder.Build();
 
