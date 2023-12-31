@@ -19,5 +19,7 @@ namespace Timonea_Razvan_Lab1.Data
         public DbSet<Timonea_Razvan_Lab1.Models.Publisher>? Publisher { get; set; }
 
         public DbSet<Timonea_Razvan_Lab1.Models.Author>? Author { get; set; }
+
+        public DbSet<Timonea_Razvan_Lab1.Models.Category>? Category { get; set; }
     }
 }
