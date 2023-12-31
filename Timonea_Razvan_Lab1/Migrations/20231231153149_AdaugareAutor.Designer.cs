@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Timonea_Razvan_Lab1.Data;
 
@@ -11,9 +12,10 @@ using Timonea_Razvan_Lab1.Data;
 namespace Timonea_Razvan_Lab1.Migrations
 {
     [DbContext(typeof(Timonea_Razvan_Lab1Context))]
-    partial class Timonea_Razvan_Lab1ContextModelSnapshot : ModelSnapshot
+    [Migration("20231231153149_AdaugareAutor")]
+    partial class AdaugareAutor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

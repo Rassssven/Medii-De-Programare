@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Timonea_Razvan_Lab1.Data;
 
@@ -11,9 +12,10 @@ using Timonea_Razvan_Lab1.Data;
 namespace Timonea_Razvan_Lab1.Migrations
 {
     [DbContext(typeof(Timonea_Razvan_Lab1Context))]
-    partial class Timonea_Razvan_Lab1ContextModelSnapshot : ModelSnapshot
+    [Migration("20231229235424_Publiher")]
+    partial class Publiher
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,27 +23,6 @@ namespace Timonea_Razvan_Lab1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Timonea_Razvan_Lab1.Models.Author", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Author");
-                });
 
             modelBuilder.Entity("Timonea_Razvan_Lab1.Models.Book", b =>
                 {
@@ -51,8 +32,9 @@ namespace Timonea_Razvan_Lab1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int?>("AuthorID")
-                        .HasColumnType("int");
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6,2)");
@@ -68,8 +50,6 @@ namespace Timonea_Razvan_Lab1.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("AuthorID");
 
                     b.HasIndex("PublisherID");
 
@@ -95,15 +75,9 @@ namespace Timonea_Razvan_Lab1.Migrations
 
             modelBuilder.Entity("Timonea_Razvan_Lab1.Models.Book", b =>
                 {
-                    b.HasOne("Timonea_Razvan_Lab1.Models.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorID");
-
                     b.HasOne("Timonea_Razvan_Lab1.Models.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherID");
-
-                    b.Navigation("Author");
 
                     b.Navigation("Publisher");
                 });

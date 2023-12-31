@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Timonea_Razvan_Lab1.Data;
 using Timonea_Razvan_Lab1.Models;
 
-namespace Timonea_Razvan_Lab1.Pages.Books
+namespace Timonea_Razvan_Lab1.Pages.Authors
 {
     public class IndexModel : PageModel
     {
@@ -19,14 +19,14 @@ namespace Timonea_Razvan_Lab1.Pages.Books
             _context = context;
         }
 
-        public IList<Book> Book { get;set; } = default!;
+        public IList<Author> Author { get;set; } = default!;
 
         public async Task OnGetAsync()
-        {   
-            Book = await _context.Book
-                .Include(b => b.Publisher)
-                .Include(b => b.Author)
-                .ToListAsync();
+        {
+            if (_context.Author != null)
+            {
+                Author = await _context.Author.ToListAsync();
+            }
         }
     }
 }
