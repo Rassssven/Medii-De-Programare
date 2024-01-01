@@ -136,7 +136,7 @@ namespace Timonea_Razvan_Lab1.Migrations
             modelBuilder.Entity("Timonea_Razvan_Lab1.Models.Book", b =>
                 {
                     b.HasOne("Timonea_Razvan_Lab1.Models.Author", "Author")
-                        .WithMany()
+                        .WithMany("Books")
                         .HasForeignKey("AuthorID");
 
                     b.HasOne("Timonea_Razvan_Lab1.Models.Publisher", "Publisher")
@@ -165,6 +165,11 @@ namespace Timonea_Razvan_Lab1.Migrations
                     b.Navigation("Book");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Timonea_Razvan_Lab1.Models.Author", b =>
+                {
+                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("Timonea_Razvan_Lab1.Models.Book", b =>

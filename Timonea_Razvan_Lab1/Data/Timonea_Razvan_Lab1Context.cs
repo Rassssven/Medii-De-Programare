@@ -21,5 +21,9 @@ namespace Timonea_Razvan_Lab1.Data
         public DbSet<Timonea_Razvan_Lab1.Models.Author>? Author { get; set; }
 
         public DbSet<Timonea_Razvan_Lab1.Models.Category>? Category { get; set; }
+
+        public DbSet<Timonea_Razvan_Lab1.Models.Member>? Member { get; set; }
+
+        public DbSet<Timonea_Razvan_Lab1.Models.Borrowing>? Borrowing { get; set; }
     }
 }

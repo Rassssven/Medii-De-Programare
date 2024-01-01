@@ -1,4 +1,6 @@
-﻿namespace Timonea_Razvan_Lab1.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Timonea_Razvan_Lab1.Models
 {
     public class Author
     {
@@ -6,5 +8,15 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        [Display(Name = "Full Name")]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
+
+        public ICollection<Book>? Books { get; set; }
     }
 }
